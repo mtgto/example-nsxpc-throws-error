@@ -11,7 +11,36 @@
 		CE1B00962BAAE13B00C830FD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1B00952BAAE13B00C830FD /* ContentView.swift */; };
 		CE1B00982BAAE13C00C830FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE1B00972BAAE13C00C830FD /* Assets.xcassets */; };
 		CE1B009B2BAAE13C00C830FD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE1B009A2BAAE13C00C830FD /* Preview Assets.xcassets */; };
+		CE1B00BE2BAB106000C830FD /* ExampleXpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1B00BD2BAB106000C830FD /* ExampleXpc.swift */; };
+		CE1B00C02BAB106000C830FD /* ExampleXpcProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1B00BF2BAB106000C830FD /* ExampleXpcProtocol.swift */; };
+		CE1B00C22BAB106000C830FD /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1B00C12BAB106000C830FD /* main.swift */; };
+		CE1B00C72BAB106000C830FD /* ExampleXpc.xpc in Embed XPC Services */ = {isa = PBXBuildFile; fileRef = CE1B00BB2BAB106000C830FD /* ExampleXpc.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CE1B00CB2BAB125C00C830FD /* ExampleXpcProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1B00BF2BAB106000C830FD /* ExampleXpcProtocol.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CE1B00C52BAB106000C830FD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE1B00882BAAE13B00C830FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CE1B00BA2BAB106000C830FD;
+			remoteInfo = ExampleXpc;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CE1B00B62BAB102B00C830FD /* Embed XPC Services */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/XPCServices";
+			dstSubfolderSpec = 16;
+			files = (
+				CE1B00C72BAB106000C830FD /* ExampleXpc.xpc in Embed XPC Services */,
+			);
+			name = "Embed XPC Services";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		CE1B00902BAAE13B00C830FD /* example-nsxpc-throws-error.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "example-nsxpc-throws-error.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -20,10 +49,23 @@
 		CE1B00972BAAE13C00C830FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE1B009A2BAAE13C00C830FD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CE1B009C2BAAE13C00C830FD /* example_nsxpc_throws_error.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = example_nsxpc_throws_error.entitlements; sourceTree = "<group>"; };
+		CE1B00BB2BAB106000C830FD /* ExampleXpc.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; includeInIndex = 0; path = ExampleXpc.xpc; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE1B00BD2BAB106000C830FD /* ExampleXpc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleXpc.swift; sourceTree = "<group>"; };
+		CE1B00BF2BAB106000C830FD /* ExampleXpcProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleXpcProtocol.swift; sourceTree = "<group>"; };
+		CE1B00C12BAB106000C830FD /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		CE1B00C32BAB106000C830FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE1B00C42BAB106000C830FD /* ExampleXpc.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ExampleXpc.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		CE1B008D2BAAE13B00C830FD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE1B00B82BAB106000C830FD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -37,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				CE1B00922BAAE13B00C830FD /* example-nsxpc-throws-error */,
+				CE1B00BC2BAB106000C830FD /* ExampleXpc */,
 				CE1B00912BAAE13B00C830FD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -45,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				CE1B00902BAAE13B00C830FD /* example-nsxpc-throws-error.app */,
+				CE1B00BB2BAB106000C830FD /* ExampleXpc.xpc */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -69,6 +113,18 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		CE1B00BC2BAB106000C830FD /* ExampleXpc */ = {
+			isa = PBXGroup;
+			children = (
+				CE1B00BD2BAB106000C830FD /* ExampleXpc.swift */,
+				CE1B00BF2BAB106000C830FD /* ExampleXpcProtocol.swift */,
+				CE1B00C12BAB106000C830FD /* main.swift */,
+				CE1B00C32BAB106000C830FD /* Info.plist */,
+				CE1B00C42BAB106000C830FD /* ExampleXpc.entitlements */,
+			);
+			path = ExampleXpc;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -79,15 +135,34 @@
 				CE1B008C2BAAE13B00C830FD /* Sources */,
 				CE1B008D2BAAE13B00C830FD /* Frameworks */,
 				CE1B008E2BAAE13B00C830FD /* Resources */,
+				CE1B00B62BAB102B00C830FD /* Embed XPC Services */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				CE1B00C62BAB106000C830FD /* PBXTargetDependency */,
 			);
 			name = "example-nsxpc-throws-error";
 			productName = "example-nsxpc-throws-error";
 			productReference = CE1B00902BAAE13B00C830FD /* example-nsxpc-throws-error.app */;
 			productType = "com.apple.product-type.application";
+		};
+		CE1B00BA2BAB106000C830FD /* ExampleXpc */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE1B00C82BAB106000C830FD /* Build configuration list for PBXNativeTarget "ExampleXpc" */;
+			buildPhases = (
+				CE1B00B72BAB106000C830FD /* Sources */,
+				CE1B00B82BAB106000C830FD /* Frameworks */,
+				CE1B00B92BAB106000C830FD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ExampleXpc;
+			productName = ExampleXpc;
+			productReference = CE1B00BB2BAB106000C830FD /* ExampleXpc.xpc */;
+			productType = "com.apple.product-type.xpc-service";
 		};
 /* End PBXNativeTarget section */
 
@@ -100,6 +175,9 @@
 				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					CE1B008F2BAAE13B00C830FD = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					CE1B00BA2BAB106000C830FD = {
 						CreatedOnToolsVersion = 15.3;
 					};
 				};
@@ -118,6 +196,7 @@
 			projectRoot = "";
 			targets = (
 				CE1B008F2BAAE13B00C830FD /* example-nsxpc-throws-error */,
+				CE1B00BA2BAB106000C830FD /* ExampleXpc */,
 			);
 		};
 /* End PBXProject section */
@@ -132,6 +211,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CE1B00B92BAB106000C830FD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -141,10 +227,29 @@
 			files = (
 				CE1B00962BAAE13B00C830FD /* ContentView.swift in Sources */,
 				CE1B00942BAAE13B00C830FD /* example_nsxpc_throws_errorApp.swift in Sources */,
+				CE1B00CB2BAB125C00C830FD /* ExampleXpcProtocol.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE1B00B72BAB106000C830FD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE1B00C02BAB106000C830FD /* ExampleXpcProtocol.swift in Sources */,
+				CE1B00BE2BAB106000C830FD /* ExampleXpc.swift in Sources */,
+				CE1B00C22BAB106000C830FD /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CE1B00C62BAB106000C830FD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CE1B00BA2BAB106000C830FD /* ExampleXpc */;
+			targetProxy = CE1B00C52BAB106000C830FD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		CE1B009D2BAAE13C00C830FD /* Debug */ = {
@@ -200,7 +305,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -257,7 +362,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -268,6 +373,7 @@
 		CE1B00A02BAAE13C00C830FD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "example-nsxpc-throws-error/example_nsxpc_throws_error.entitlements";
@@ -295,6 +401,7 @@
 		CE1B00A12BAAE13C00C830FD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "example-nsxpc-throws-error/example_nsxpc_throws_error.entitlements";
@@ -319,6 +426,50 @@
 			};
 			name = Release;
 		};
+		CE1B00C92BAB106000C830FD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ExampleXpc/ExampleXpc.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W3A6B7FDC7;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ExampleXpc/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ExampleXpc;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.mtgto.example-nsxpc-throws-error.ExampleXpc";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		CE1B00CA2BAB106000C830FD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ExampleXpc/ExampleXpc.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W3A6B7FDC7;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ExampleXpc/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ExampleXpc;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.mtgto.example-nsxpc-throws-error.ExampleXpc";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -336,6 +487,15 @@
 			buildConfigurations = (
 				CE1B00A02BAAE13C00C830FD /* Debug */,
 				CE1B00A12BAAE13C00C830FD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CE1B00C82BAB106000C830FD /* Build configuration list for PBXNativeTarget "ExampleXpc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE1B00C92BAB106000C830FD /* Debug */,
+				CE1B00CA2BAB106000C830FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
