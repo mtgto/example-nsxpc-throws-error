@@ -7,13 +7,17 @@ import Foundation
 class ExampleXpc: NSObject, ExampleXpcProtocol {
     @objc func performNothing() {}
 
+    @objc func performCallback(with reply: @escaping () -> Void) {
+        reply()
+    }
+
     /// This implements the example protocol. Replace the body of this class with the implementation of this service's protocol.
     @objc func performCalculation(firstNumber: Int, secondNumber: Int, with reply: @escaping (Int) -> Void) {
         let response = firstNumber + secondNumber
         reply(response)
     }
 
-    @objc func performCalculation2(firstNumber: Int, secondNumber: Int) async -> Int {
+    @objc func performCalculationAsync(firstNumber: Int, secondNumber: Int) async -> Int {
         return firstNumber + secondNumber
     }
 

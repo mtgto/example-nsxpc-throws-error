@@ -5,6 +5,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State var nothingResult: String = "Waiting…"
+    @State var callbackResult: String = "Waiting…"
     @State var simpleResult: String = "Waiting…"
     @State var simpleAsyncResult: String = "Waiting…"
     @State var errorResult: String = "Waiting…"
@@ -26,6 +27,22 @@ struct ContentView: View {
                     nothingResult = "Done"
                 }
                 Text(nothingResult)
+            }
+            Section("Run XPC Call with no argument and no return value using callback") {
+                Button("Run…") {
+                    callbackResult = "Running…"
+                    let service = NSXPCConnection(serviceName: "net.mtgto.example-nsxpc-throws-error.ExampleXpc")
+                    service.remoteObjectInterface = NSXPCInterface(with: ExampleXpcProtocol.self)
+                    service.activate()
+                    guard let proxy = service.remoteObjectProxy as? any ExampleXpcProtocol else { return }
+                    defer {
+                        service.invalidate()
+                    }
+                    proxy.performCallback {
+                        callbackResult = "Done"
+                    }
+                }
+                Text(callbackResult)
             }
             Section("Run XPC Call with two Int arguments and returns Int by callback closure") {
                 Button("Run…") {
@@ -54,7 +71,7 @@ struct ContentView: View {
                         defer {
                             service.invalidate()
                         }
-                        let sum = await proxy.performCalculation2(firstNumber: 100, secondNumber: 200)
+                        let sum = await proxy.performCalculationAsync(firstNumber: 100, secondNumber: 200)
                         simpleAsyncResult = "SUM: \(sum)"
                     }
                 }
@@ -77,6 +94,8 @@ struct ContentView: View {
                             if let error = error as? ExampleXpcError {
                                 errorResult = "ExampleXpcError is throwed"
                             } else {
+                                let nserror = error as NSError
+                                print("domain = \(nserror.domain), code = \(nserror.code), userInfo = \(nserror.userInfo)")
                                 errorResult = "Unknown Error is throwed"
                             }
                         }

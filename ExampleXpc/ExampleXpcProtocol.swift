@@ -14,8 +14,9 @@ public class ExampleXpcNSError: NSError {
 @objc protocol ExampleXpcProtocol {
     // No argument, no return value
     func performNothing()
+    func performCallback(with reply: @escaping () -> Void)
     func performCalculation(firstNumber: Int, secondNumber: Int, with reply: @escaping (Int) -> Void)
-    func performCalculation2(firstNumber: Int, secondNumber: Int) async -> Int
+    func performCalculationAsync(firstNumber: Int, secondNumber: Int) async -> Int
 
     /// Throws enum Error
     func performThrowsError() async throws
