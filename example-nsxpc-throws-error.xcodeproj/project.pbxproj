@@ -15,7 +15,7 @@
 		CE1B00C02BAB106000C830FD /* ExampleXpcProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1B00BF2BAB106000C830FD /* ExampleXpcProtocol.swift */; };
 		CE1B00C22BAB106000C830FD /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1B00C12BAB106000C830FD /* main.swift */; };
 		CE1B00C72BAB106000C830FD /* ExampleXpc.xpc in Embed XPC Services */ = {isa = PBXBuildFile; fileRef = CE1B00BB2BAB106000C830FD /* ExampleXpc.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		CE1B00CB2BAB125C00C830FD /* ExampleXpcProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1B00BF2BAB106000C830FD /* ExampleXpcProtocol.swift */; };
+		CED1CA1C2BAC500B00C32AE3 /* ExampleXpcProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1B00BF2BAB106000C830FD /* ExampleXpcProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -227,7 +227,7 @@
 			files = (
 				CE1B00962BAAE13B00C830FD /* ContentView.swift in Sources */,
 				CE1B00942BAAE13B00C830FD /* example_nsxpc_throws_errorApp.swift in Sources */,
-				CE1B00CB2BAB125C00C830FD /* ExampleXpcProtocol.swift in Sources */,
+				CED1CA1C2BAC500B00C32AE3 /* ExampleXpcProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
