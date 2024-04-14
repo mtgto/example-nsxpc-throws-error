@@ -16,6 +16,7 @@ public class ExampleXpcNSError: NSError {
     func performNothing()
     func performCallback(with reply: @escaping () -> Void)
     func performCalculation(firstNumber: Int, secondNumber: Int, with reply: @escaping (Int) -> Void)
+    func performNothingAsync() async
     func performCalculationAsync(firstNumber: Int, secondNumber: Int) async -> Int
 
     /// Throws enum Error

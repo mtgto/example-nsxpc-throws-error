@@ -7,6 +7,7 @@ struct ContentView: View {
     @State var nothingResult: String = "Waiting…"
     @State var callbackResult: String = "Waiting…"
     @State var simpleResult: String = "Waiting…"
+    @State var simpleAsyncNothingResult: String = "Waiting…"
     @State var simpleAsyncResult: String = "Waiting…"
     @State var errorResult: String = "Waiting…"
     @State var nserrorResult: String = "Waiting…"
@@ -59,6 +60,23 @@ struct ContentView: View {
                     }
                 }
                 Text(simpleResult)
+            }
+            Section("Run async XPC Call with no argument and no return value") {
+                Button("Run…") {
+                    simpleAsyncNothingResult = "Running…"
+                    Task {
+                        let service = NSXPCConnection(serviceName: "net.mtgto.example-nsxpc-throws-error.ExampleXpc")
+                        service.remoteObjectInterface = NSXPCInterface(with: ExampleXpcProtocol.self)
+                        service.activate()
+                        guard let proxy = service.remoteObjectProxy as? any ExampleXpcProtocol else { return }
+                        defer {
+                            service.invalidate()
+                        }
+                        await proxy.performNothingAsync()
+                        simpleAsyncNothingResult = "Done"
+                    }
+                }
+                Text(simpleAsyncNothingResult)
             }
             Section("Run async XPC Call with two Int arguments and returns Int") {
                 Button("Run…") {

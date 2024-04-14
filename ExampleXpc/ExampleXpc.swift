@@ -17,6 +17,10 @@ class ExampleXpc: NSObject, ExampleXpcProtocol {
         reply(response)
     }
 
+    @objc func performNothingAsync() async {
+
+    }
+
     @objc func performCalculationAsync(firstNumber: Int, secondNumber: Int) async -> Int {
         return firstNumber + secondNumber
     }
