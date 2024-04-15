@@ -4,6 +4,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    let service = NSXPCConnection(serviceName: "net.mtgto.example-nsxpc-throws-error.ExampleXpc")
     @State var nothingResult: String = "Waiting…"
     @State var callbackResult: String = "Waiting…"
     @State var simpleResult: String = "Waiting…"
@@ -17,13 +18,7 @@ struct ContentView: View {
             Section("Run XPC Call with no argument and no return value") {
                 Button("Run…") {
                     nothingResult = "Running…"
-                    let service = NSXPCConnection(serviceName: "net.mtgto.example-nsxpc-throws-error.ExampleXpc")
-                    service.remoteObjectInterface = NSXPCInterface(with: ExampleXpcProtocol.self)
-                    service.activate()
-                    guard let proxy = service.remoteObjectProxy as? any ExampleXpcProtocol else { return }
-                    defer {
-                        service.invalidate()
-                    }
+                    guard let proxy = proxy() else { return }
                     proxy.performNothing()
                     nothingResult = "Done"
                 }
@@ -32,13 +27,7 @@ struct ContentView: View {
             Section("Run XPC Call with no argument and no return value using callback") {
                 Button("Run…") {
                     callbackResult = "Running…"
-                    let service = NSXPCConnection(serviceName: "net.mtgto.example-nsxpc-throws-error.ExampleXpc")
-                    service.remoteObjectInterface = NSXPCInterface(with: ExampleXpcProtocol.self)
-                    service.activate()
-                    guard let proxy = service.remoteObjectProxy as? any ExampleXpcProtocol else { return }
-                    defer {
-                        service.invalidate()
-                    }
+                    guard let proxy = proxy() else { return }
                     proxy.performCallback {
                         callbackResult = "Done"
                     }
@@ -48,13 +37,7 @@ struct ContentView: View {
             Section("Run XPC Call with two Int arguments and returns Int by callback closure") {
                 Button("Run…") {
                     simpleResult = "Running…"
-                    let service = NSXPCConnection(serviceName: "net.mtgto.example-nsxpc-throws-error.ExampleXpc")
-                    service.remoteObjectInterface = NSXPCInterface(with: ExampleXpcProtocol.self)
-                    service.activate()
-                    guard let proxy = service.remoteObjectProxy as? any ExampleXpcProtocol else { return }
-                    defer {
-                        service.invalidate()
-                    }
+                    guard let proxy = proxy() else { return }
                     proxy.performCalculation(firstNumber: 100, secondNumber: 200) { sum in
                         simpleResult = "SUM: \(sum)"
                     }
@@ -65,13 +48,7 @@ struct ContentView: View {
                 Button("Run…") {
                     simpleAsyncNothingResult = "Running…"
                     Task {
-                        let service = NSXPCConnection(serviceName: "net.mtgto.example-nsxpc-throws-error.ExampleXpc")
-                        service.remoteObjectInterface = NSXPCInterface(with: ExampleXpcProtocol.self)
-                        service.activate()
-                        guard let proxy = service.remoteObjectProxy as? any ExampleXpcProtocol else { return }
-                        defer {
-                            service.invalidate()
-                        }
+                        guard let proxy = proxy() else { return }
                         await proxy.performNothingAsync()
                         simpleAsyncNothingResult = "Done"
                     }
@@ -82,13 +59,7 @@ struct ContentView: View {
                 Button("Run…") {
                     simpleAsyncResult = "Running…"
                     Task {
-                        let service = NSXPCConnection(serviceName: "net.mtgto.example-nsxpc-throws-error.ExampleXpc")
-                        service.remoteObjectInterface = NSXPCInterface(with: ExampleXpcProtocol.self)
-                        service.activate()
-                        guard let proxy = service.remoteObjectProxy as? any ExampleXpcProtocol else { return }
-                        defer {
-                            service.invalidate()
-                        }
+                        guard let proxy = proxy() else { return }
                         let sum = await proxy.performCalculationAsync(firstNumber: 100, secondNumber: 200)
                         simpleAsyncResult = "SUM: \(sum)"
                     }
@@ -99,13 +70,7 @@ struct ContentView: View {
                 Button("Run…") {
                     errorResult = "Running…"
                     Task {
-                        let service = NSXPCConnection(serviceName: "net.mtgto.example-nsxpc-throws-error.ExampleXpc")
-                        service.remoteObjectInterface = NSXPCInterface(with: ExampleXpcProtocol.self)
-                        service.activate()
-                        guard let proxy = service.remoteObjectProxy as? any ExampleXpcProtocol else { return }
-                        defer {
-                            service.invalidate()
-                        }
+                        guard let proxy = proxy() else { return }
                         do {
                             try await proxy.performThrowsError()
                         } catch {
@@ -126,10 +91,7 @@ struct ContentView: View {
                 Button("Run…") {
                     nserrorResult = "Running…"
                     Task {
-                        let service = NSXPCConnection(serviceName: "net.mtgto.example-nsxpc-throws-error.ExampleXpc")
-                        service.remoteObjectInterface = NSXPCInterface(with: ExampleXpcProtocol.self)
-                        service.activate()
-                        guard let proxy = service.remoteObjectProxy as? any ExampleXpcProtocol else { return }
+                        guard let proxy = proxy() else { return }
                         defer {
                             service.invalidate()
                         }
@@ -149,6 +111,14 @@ struct ContentView: View {
         }
         .formStyle(.grouped)
         .padding()
+    }
+
+    func proxy() -> ExampleXpcProtocol? {
+        service.remoteObjectInterface = NSXPCInterface(with: ExampleXpcProtocol.self)
+        service.activate()
+        return service.remoteObjectProxyWithErrorHandler { error in
+            print("Error: \(error)")
+        } as? any ExampleXpcProtocol
     }
 }
 
